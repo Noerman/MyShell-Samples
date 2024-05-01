@@ -1,0 +1,37 @@
+{
+  "type": "automata",
+  "id": "My_First_Chatbot",
+  "initial": "chat_state",
+  "inputs": {},
+  "outputs": {},
+  "transitions": {},
+  "states": {
+    "chat_state": {
+      "inputs": {
+        "user_message": {
+          "type": "IM",
+          "user_input": true
+        }
+      },
+      "tasks": [
+        {
+          "name": "generate_reply",
+          "module_type": "AnyWidgetModule",
+          "module_config": {
+            "widget_id": "1744214024104448000", // GPT-3.5 widget ID 
+            "system_prompt": "You are a helpful and friendly AI assistant.",
+            "user_prompt": "{{user_message}}",
+            "output_name": "reply"
+          }
+        }
+      ],
+      "outputs": {},
+      "render": {
+        "text": "{{reply}}"
+      },
+      "transitions": {
+        "CHAT": "chat_state"
+      }
+    }
+  }
+}
